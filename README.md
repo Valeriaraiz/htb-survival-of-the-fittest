@@ -6,7 +6,8 @@ Antes de comenzar el reto, fue necesario instalar Foundry, un framework de desar
 https://getfoundry.sh/
 ![Captura de pantalla 2025-06-22 154708](https://github.com/user-attachments/assets/62831ee1-bc54-43f9-aaa9-345dbb410ff8) <br><br>
 
-El entorno de este reto corre en una red privada con RPC personalizado. Cada vez que reinicias el challenge, se te asigna una IP y puerto únicos, visibles en la sección "Connection" de la web del challenge. <br><br>
+El entorno de este reto corre en una red privada con RPC personalizado (RPC es la interfaz que nos permite interactuar con nodos dé la blockchain remotamente).
+Cada vez que reinicias el challenge, se te asigna una IP y puerto únicos, visibles en la sección "Connection" de la web del challenge. <br><br>
 
 ![Captura de pantalla 2025-06-22 154537](https://github.com/user-attachments/assets/87efd4bf-69dd-4114-b042-0da98e93f87c)
 ![Captura de pantalla 2025-06-22 160606](https://github.com/user-attachments/assets/bcb05e3e-7c58-410c-bc36-b1bb2cc3ccbe)
