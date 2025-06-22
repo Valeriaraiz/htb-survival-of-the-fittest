@@ -48,8 +48,8 @@ cast send \
 ```
 1. --rpc-url: Dirección RPC del nodo donde se corre el reto
 2. --private-key: Clave privada de tu wallet
-3. Dirección del contrato	Donde se envía la transacción (Creature o Setup)
-4. "strongAttack(uint256)" 20	Llama a strongAttack con 20 de daño para dejar al Creature con 0 vida.
+3. Dirección del contrato: Donde se envía la transacción (Creature o Setup)
+4. "strongAttack(uint256)" 20: Llama a strongAttack con 20 de daño para dejar al Creature con 0 vida.
 strongAttack(20) es una función del contrato Creature que reduce sus lifePoints en 20.
 
 Como empieza con 20, al hacer esto queda con 0 vida.
